@@ -10,9 +10,9 @@ const amountInput = document.querySelector('#controls input');
 const boxesDiv = document.querySelector('#boxes');
 
 function createBoxes(amount) {
-
     destroyBoxes();
 
+	const collection = new DocumentFragment();
     let size = 30;
     for (let i = 0; i < amount; i++) {
         const box = document.createElement('div');
@@ -20,9 +20,10 @@ function createBoxes(amount) {
         box.style.height = `${size}px`;
         box.style.backgroundColor = getRandomHexColor();
         box.style.marginBottom = '10px';
-        boxesDiv.appendChild(box);
+		collection.append(box);
         size += 10;
     }
+	boxesDiv.append(collection);
 }
 
 function destroyBoxes(){
